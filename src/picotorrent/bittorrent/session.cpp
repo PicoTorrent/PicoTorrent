@@ -129,6 +129,7 @@ static lt::settings_pack getSettingsPack(std::shared_ptr<pt::Core::Configuration
     {
         settings.set_str(lt::settings_pack::outgoing_interfaces, outfaces.str().substr(1));
     }
+    settings.set_int(lt::settings_pack::announce_ip, cfg->Get<int>("libtorrent.announce_ip").value());
 
     // Features
     settings.set_bool(lt::settings_pack::enable_dht, cfg->Get<bool>("libtorrent.enable_dht").value());
@@ -150,6 +151,7 @@ static lt::settings_pack getSettingsPack(std::shared_ptr<pt::Core::Configuration
     settings.set_int(lt::settings_pack::inactive_up_rate, cfg->Get<int>("libtorrent.inactive_up_rate").value());
     settings.set_int(lt::settings_pack::seed_time_ratio_limit, cfg->Get<int>("libtorrent.seed_time_ratio_limit").value());
     settings.set_int(lt::settings_pack::share_ratio_limit, cfg->Get<int>("libtorrent.share_ratio_limit").value());
+    settings.set_bool(lt::settings_pack::rate_limit_ip_overhead, cfg->Get<bool>("libtorrent.rate_limit_ip_overhead").value());
 
     // Misc
     settings.set_bool(lt::settings_pack::allow_multiple_connections_per_ip, cfg->Get<bool>("libtorrent.allow_multiple_connections_per_ip").value());
@@ -194,6 +196,11 @@ static lt::settings_pack getSettingsPack(std::shared_ptr<pt::Core::Configuration
     settings.set_int(lt::settings_pack::unchoke_slots_limit, cfg->Get<int>("libtorrent.unchoke_slots_limit").value());
     settings.set_bool(lt::settings_pack::use_parole_mode, cfg->Get<bool>("libtorrent.use_parole_mode").value());
     settings.set_int(lt::settings_pack::whole_pieces_threshold, cfg->Get<int>("libtorrent.whole_pieces_threshold").value());
+    settings.set_bool(lt::settings_pack::enable_outgoing_utp, cfg->Get<bool>("libtorrent.enable_outgoing_utp").value());
+    settings.set_bool(lt::settings_pack::enable_incoming_utp, cfg->Get<bool>("libtorrent.enable_incoming_utp").value());
+    settings.set_bool(lt::settings_pack::enable_outgoing_tcp, cfg->Get<bool>("libtorrent.enable_outgoing_tcp").value());
+    settings.set_bool(lt::settings_pack::enable_incoming_tcp, cfg->Get<bool>("libtorrent.enable_incoming_tcp").value());
+    settings.set_bool(lt::settings_pack::dht_privacy_lookups, cfg->Get<bool>("libtorrent.dht_privacy_lookups").value());
 
     // Tracker things
     settings.set_bool(lt::settings_pack::announce_to_all_tiers, cfg->Get<bool>("libtorrent.announce_to_all_tiers").value());
